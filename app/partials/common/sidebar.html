@@ -1,0 +1,12 @@
+<div ng-controller="SidebarCtrl" ng-init="getFiles('clients')">
+    <div class="list-group">
+      <a href="#/" ng-click="getFiles('clients')" class="list-group-item" ng-class="selectedItem == 'clients' ? 'active' : ''">ClockWork Clients</a>
+      <a href="#/" ng-click="getFiles('server')" class="list-group-item" ng-class="selectedItem == 'server' ? 'active' : ''">ClockWork Server</a>
+      <a href="#/" ng-click="getFiles('web')" class="list-group-item" ng-class="selectedItem == 'web' ? 'active' : ''">ClockWork Web</a>
+      <a href="#/" ng-click="getFiles('scripts')" class="list-group-item" ng-class="selectedItem == 'scripts' ? 'active' : ''">Database Scripts</a>
+      <a href="#/" ng-click="getFiles('updatingservice')" class="list-group-item" ng-class="selectedItem == 'updatingservice' ? 'active' : ''">Updating Service</a>
+      <a href="#/" ng-click="getFiles('appointmentsync')" class="list-group-item" ng-class="selectedItem == 'appointmentsync' ? 'active' : ''">Appointment Sync</a>
+      <a href="#/" ng-click="getFiles('documents')" class="list-group-item" ng-class="selectedItem == 'documents' ? 'active' : ''">Documents</a>
+      <a href="#/" ng-click="getFiles('temporary')" class="list-group-item" ng-class="selectedItem == 'temporary' ? 'active' : ''">Temporary</a>
+    </div>
+</div>
