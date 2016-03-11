@@ -1,5 +1,5 @@
 angular.module('tpro')
 
 .constant('API_ENDPOINT', {
-    url: 'http://clockworks.ca/install'
+    url: 'http://localhost:8080/install'
 })

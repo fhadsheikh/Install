@@ -42,12 +42,47 @@ angular.module('tpro')
     
     // Delete installers
     $scope.delete = function(container,blob){
-        console.log(container+' '+blob);
         Files.deleteFile(container,blob);
         Files.getFiles($scope.selectedItem).then(function(response){
             $scope.$emit('filesFound',response);
         })
     }
+    
+            uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+            console.info('onWhenAddingFileFailed', item, filter, options);
+        };
+        uploader.onAfterAddingFile = function(fileItem) {
+            console.info('onAfterAddingFile', fileItem);
+        };
+        uploader.onAfterAddingAll = function(addedFileItems) {
+            console.info('onAfterAddingAll', addedFileItems);
+        };
+        uploader.onBeforeUploadItem = function(item) {
+            console.info('onBeforeUploadItem', item);
+        };
+        uploader.onProgressItem = function(fileItem, progress) {
+            console.info('onProgressItem', fileItem, progress);
+        };
+        uploader.onProgressAll = function(progress) {
+            console.info('onProgressAll', progress);
+        };
+        uploader.onSuccessItem = function(fileItem, response, status, headers) {
+            console.info('onSuccessItem', fileItem, response, status, headers);
+        };
+        uploader.onErrorItem = function(fileItem, response, status, headers) {
+            console.info('onErrorItem', fileItem, response, status, headers);
+        };
+        uploader.onCancelItem = function(fileItem, response, status, headers) {
+            console.info('onCancelItem', fileItem, response, status, headers);
+        };
+        uploader.onCompleteItem = function(fileItem, response, status, headers) {
+            console.info('onCompleteItem', fileItem, response, status, headers);
+        };
+        uploader.onCompleteAll = function() {
+            console.info('onCompleteAll');
+        };
+
+        console.info('uploader', uploader);
     
 })
 
@@ -59,10 +94,8 @@ angular.module('tpro')
         $location.path('/login');
         $http.delete('api/index.php/auth')
         .then(function(res){
-            console.log(res)
         })
         .catch(function(err){
-            console.log(err)
         });
     }
     
@@ -124,7 +157,6 @@ angular.module('tpro')
     
     $timeout(function(){
         Links.checkLink($routeParams.containerblobdate,$routeParams.hash).then(function(res){
-            console.log(res);
             $scope.blobName = res.name;
             $scope.downloadLink = res.url;
             $scope.expiryDate = "Link will expire on "+res.date;
@@ -139,18 +171,10 @@ angular.module('tpro')
     },2000);
     
     $scope.startDownload = function(){
-        
-//        $window.location.href = $scope.downloadLink;
-        
-        Links.downloadLink($routeParams.containerblobdate,$routeParams.hash)
-        .then(function(res){
-             $scope.message = 'Please submit a ticket here if you are having issues downloading.';
-            $scope.progressBar = false;
-            $scope.blobName = "Download Complete";
-        });
-        
 
-        }
+        Links.downloadLink($routeParams.containerblobdate,$routeParams.hash);
+        
+    }
     
     
     

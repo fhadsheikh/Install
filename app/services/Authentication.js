@@ -8,7 +8,6 @@ angular.module('tpro')
         
         checkSession: function()
         {
-            
             var deferred = $q.defer();
             
             if($localStorage.user != undefined){
@@ -27,7 +26,6 @@ angular.module('tpro')
                 }).error(function(error)
                 {
                     deferred.reject(error);
-                    console.log('still here');
                     Application.forceReady();
                 });
                 
@@ -68,13 +66,11 @@ angular.module('tpro')
                 else
                 {
                     deferred.reject('Given credentials are incorrect');
-                    console.log('fail');
                 }
 
             }).error(function(error)
             {
                 deferred.reject(error);
-                console.log('fail2');
             });
 
             return deferred.promise;

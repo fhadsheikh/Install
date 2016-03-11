@@ -25,30 +25,6 @@ angular.module('tpro')
             })
 
             return deferred.promise;
-        },
-        
-        deleteFile: function(container, blob){
-            
-            var deferred = $q.defer();
-            
-            var data = {'container':container, 'blob': blob};
-            
-            var req = {
-                method: 'DELETE',
-                url: '/install/api/index.php/installers',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }
-            
-            $http(req)
-            .then(function onSuccess(response){
-                deferred.resolve(response);
-            })
-            .catch(function onError(err){
-                deferred.reject(err);
-            })
-            
-            return deferred.promise;
-            
         }
     }
     

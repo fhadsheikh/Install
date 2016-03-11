@@ -19,6 +19,7 @@ angular.module('tpro', ['ngRoute','ngclipboard','ngStorage','angularFileUpload']
         templateUrl: 'app/partials/download.html',
         controller: 'DownloadCtrl'
     })
+    .otherwise({redirectTo: '/'});
     
 }])
 

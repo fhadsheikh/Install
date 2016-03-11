@@ -7,12 +7,11 @@ angular.module('tpro')
             {
                 var deferred = $q.defer();
                 
-                $http.get('api/index.php/link?containerblobdate='+containerblobdate+'&hash='+hash)
+                $http.get('api/index.php/installers/checklink?containerblobdate='+containerblobdate+'&hash='+hash)
                 .success(function(res){
                     deferred.resolve(res);
                 })
                 .error(function(err){
-                    console.log(err);
                     deferred.reject(err);
                 });
                 
@@ -23,20 +22,10 @@ angular.module('tpro')
             {
                 var deferred = $q.defer();
                 
-               
-                var link = 'api/index.php/link/download?containerblobdate='+containerblobdate+'&hash='+hash;
+                var link = 'api/index.php/installers/download?containerblobdate='+containerblobdate+'&hash='+hash;
                 
-                $window.location.href = link;
-               
-                deferred.resolve('success');
-                
-                return deferred.promise;
+                $window.location = link;
              
-            },
-            
-            generateLink: function()
-            {
-                
             }
         }
 })

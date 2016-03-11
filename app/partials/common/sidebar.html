@@ -1,6 +1,6 @@
-<div ng-controller="SidebarCtrl" ng-init="getFiles('clients')">
+<div ng-controller="SidebarCtrl" ng-init="getFiles('client')">
     <div class="list-group">
-      <a href="#/" ng-click="getFiles('clients')" class="list-group-item" ng-class="selectedItem == 'clients' ? 'active' : ''">ClockWork Clients</a>
+      <a href="#/" ng-click="getFiles('client')" class="list-group-item" ng-class="selectedItem == 'clients' ? 'active' : ''">ClockWork Clients</a>
       <a href="#/" ng-click="getFiles('server')" class="list-group-item" ng-class="selectedItem == 'server' ? 'active' : ''">ClockWork Server</a>
       <a href="#/" ng-click="getFiles('web')" class="list-group-item" ng-class="selectedItem == 'web' ? 'active' : ''">ClockWork Web</a>
       <a href="#/" ng-click="getFiles('scripts')" class="list-group-item" ng-class="selectedItem == 'scripts' ? 'active' : ''">Database Scripts</a>
