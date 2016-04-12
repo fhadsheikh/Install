@@ -64,10 +64,10 @@ class Installers extends REST_Controller {
         
         // Check Date
         
-        $clientDate = date('d-m-Y', strtotime($nameAndDateSplit[2]));
+        $clientDate = strtotime(date('d-m-Y', strtotime($nameAndDateSplit[2])));
         $clientDateFormatted = date('l F j, Y', strtotime($nameAndDateSplit[2]));
         
-        $now = date('d-m-Y');
+        $now = strtotime(date('d-m-Y'));
         
         if($clientDate < $now){
             $this->response(array('message'=>'Link has expired. Please contact TPRO for a new link'), 404);
@@ -103,17 +103,17 @@ class Installers extends REST_Controller {
         
         // Check Date
         
-        $clientDate = date('d-m-Y', strtotime($nameAndDateSplit[2]));
+        $clientDate = strtotime(date('d-m-Y', strtotime($nameAndDateSplit[2])));
         $clientDateFormatted = date('l F j, Y', strtotime($nameAndDateSplit[2]));
         
-        $now = date('d-m-Y');
+        $now = strtotime(date('d-m-Y'));
         
         if($clientDate < $now){
-            $this->response(array('message'=>'Link has expired. Please contact TPRO for a new link'), 404);
+            $this->response(array('message'=>'Link has expired. Please contact TPRO for a new link .. '.$clientDate.' '.$now), 404);
         }
         
-        if(filesize("..\installers\stable\\".$nameAndDateSplit[0]."\\".$nameAndDateSplit[1])){
-           header("Content-Length:". filesize("..\installers\stable\\".$nameAndDateSplit[0]."\\".$nameAndDateSplit[1]));
+        if(filesize("..\..\..\installers\stable\\".$nameAndDateSplit[0]."\\".$nameAndDateSplit[1])){
+           header("Content-Length:". filesize("..\..\..\installers\stable\\".$nameAndDateSplit[0]."\\".$nameAndDateSplit[1]));
         }
         
         header("Content-Disposition: attachment; filename=\"$nameAndDateSplit[1]\"");
@@ -128,3 +128,4 @@ class Installers extends REST_Controller {
     }
     
 }
+?>
